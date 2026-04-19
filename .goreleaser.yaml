@@ -25,8 +25,8 @@ archives:
 nfpms:
   - id: packages
     package_name: togram
-    vendor: rsmfgh
-    homepage: https://github.com/rsmfgh/togram
+    vendor: geqo
+    homepage: https://github.com/geqo/togram
     description: CLI tool to send messages and files to Telegram
     license: MIT
     formats:

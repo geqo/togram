@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/rsmfgh/togram/cmd"
+	"github.com/geqo/togram/cmd"
 )
 
 func main() {

@@ -1,4 +1,4 @@
-module github.com/rsmfgh/togram
+module github.com/geqo/togram
 
 go 1.24.4
 

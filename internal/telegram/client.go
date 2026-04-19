@@ -10,7 +10,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/rsmfgh/togram/internal/detect"
+	"github.com/geqo/togram/internal/detect"
 )
 
 const apiBase = "https://api.telegram.org/bot"

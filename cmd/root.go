@@ -5,9 +5,9 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/rsmfgh/togram/internal/config"
-	"github.com/rsmfgh/togram/internal/detect"
-	"github.com/rsmfgh/togram/internal/telegram"
+	"github.com/geqo/togram/internal/config"
+	"github.com/geqo/togram/internal/detect"
+	"github.com/geqo/togram/internal/telegram"
 	"github.com/spf13/cobra"
 )
 

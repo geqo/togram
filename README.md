@@ -14,8 +14,10 @@ togram -c @mychat video.mp4
 ### apt (Debian / Ubuntu)
 
 ```bash
-curl -s https://packagecloud.io/geqo/togram/gpgkey | sudo apt-key add -
-echo "deb https://packagecloud.io/geqo/togram/any/ any main" \
+curl -fsSL "https://packages.buildkite.com/geqo/togram/gpgkey" \
+  | gpg --dearmor \
+  | sudo tee /etc/apt/keyrings/togram.gpg > /dev/null
+echo "deb [signed-by=/etc/apt/keyrings/togram.gpg] https://packages.buildkite.com/geqo/togram/deb/ any main" \
   | sudo tee /etc/apt/sources.list.d/togram.list
 sudo apt update && sudo apt install togram
 ```
@@ -23,10 +25,11 @@ sudo apt update && sudo apt install togram
 ### rpm (Fedora / RHEL)
 
 ```bash
-curl -s https://packagecloud.io/geqo/togram/gpgkey | sudo rpm --import /dev/stdin
+curl -fsSL "https://packages.buildkite.com/geqo/togram/gpgkey" \
+  | sudo rpm --import /dev/stdin
 echo "[togram]
 name=togram
-baseurl=https://packagecloud.io/geqo/togram/el/9/x86_64
+baseurl=https://packages.buildkite.com/geqo/togram/rpm/
 enabled=1
 gpgcheck=1" | sudo tee /etc/yum.repos.d/togram.repo
 sudo dnf install togram
