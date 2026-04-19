@@ -8,7 +8,7 @@ GORELEASER_VERSION=v2.8.2
 curl -fsSL "https://github.com/goreleaser/goreleaser/releases/download/${GORELEASER_VERSION}/goreleaser_Linux_x86_64.tar.gz" \
   | tar -xz -C /usr/local/bin goreleaser
 
-goreleaser release --clean --skip=publish
+goreleaser release --clean
 
 ORG=geqo
 API="https://api.buildkite.com/v2/packages/organizations/${ORG}/registries"

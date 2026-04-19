@@ -15,5 +15,6 @@ steps:
           image: "golang:1.24-alpine"
           environment:
             - BUILDKITE_API_TOKEN
+            - GITHUB_TOKEN
     agents:
       queue: default
