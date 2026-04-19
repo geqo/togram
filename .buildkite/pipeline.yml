@@ -1,0 +1,19 @@
+steps:
+  - label: ":golang: test"
+    command: go test ./...
+    plugins:
+      - docker#v5.11.0:
+          image: golang:1.24-alpine
+
+  - wait
+
+  - label: ":rocket: release"
+    if: build.tag =~ /^v[0-9]/
+    command: .buildkite/release.sh
+    plugins:
+      - docker#v5.11.0:
+          image: golang:1.24-alpine
+          environment:
+            - BUILDKITE_API_TOKEN
+    agents:
+      queue: default
