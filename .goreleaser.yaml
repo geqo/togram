@@ -1,0 +1,62 @@
+version: 2
+
+project_name: togram
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w -X main.version={{.Version}}
+
+archives:
+  - formats: [tar.gz]
+    name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
+
+nfpms:
+  - id: packages
+    package_name: togram
+    vendor: rsmfgh
+    homepage: https://github.com/rsmfgh/togram
+    description: CLI tool to send messages and files to Telegram
+    license: MIT
+    formats:
+      - deb
+      - rpm
+      - apk
+    bindir: /usr/bin
+    contents:
+      - src: ./completions/togram.bash
+        dst: /etc/bash_completion.d/togram
+        type: config|noreplace
+        file_info:
+          mode: 0644
+
+snapcrafts:
+  - name: togram
+    summary: Send messages and files to Telegram from the CLI
+    description: |
+      togram pipes stdin or files to a Telegram chat via Bot API.
+      Automatically detects content type (text, photo, video, document).
+    grade: stable
+    confinement: strict
+    publish: false
+
+checksum:
+  name_template: "checksums.txt"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
